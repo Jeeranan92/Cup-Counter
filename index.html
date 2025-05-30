@@ -81,22 +81,27 @@
         <th>จำนวนที่รับไป</th>
       </tr>
     </thead>
-    <tbody id="logTableBody">
-    </tbody>
+    <tbody id="logTableBody"></tbody>
   </table>
 
   <script>
     const cupCountEl = document.getElementById("cupCount");
     const tableBody = document.getElementById("logTableBody");
+    const nameSelect = document.getElementById("nameSelect");
 
     // โหลดข้อมูลจาก localStorage หรือกำหนดค่าเริ่มต้น
     let totalCups = parseInt(localStorage.getItem("totalCups")) || 150;
     let log = JSON.parse(localStorage.getItem("cupLog")) || {};
+    const savedName = localStorage.getItem("selectedName");
+
+    if (savedName) {
+      nameSelect.value = savedName;
+    }
 
     cupCountEl.textContent = totalCups;
 
     function takeCup() {
-      const name = document.getElementById("nameSelect").value;
+      const name = nameSelect.value;
 
       if (!name) {
         alert("กรุณาเลือกชื่อก่อน");
@@ -114,6 +119,7 @@
       // บันทึกข้อมูลลง localStorage
       localStorage.setItem("totalCups", totalCups);
       localStorage.setItem("cupLog", JSON.stringify(log));
+      localStorage.setItem("selectedName", name);  // บันทึกชื่อที่เลือกไว้ด้วย
 
       cupCountEl.textContent = totalCups;
       renderTable();
@@ -124,18 +130,25 @@
       let index = 1;
       for (const name in log) {
         const row = document.createElement("tr");
-        row.innerHTML = `
-          <td>${index++}</td>
-          <td>${name}</td>
-          <td>${log[name]}</td>
-        `;
+
+        const cellIndex = document.createElement("td");
+        cellIndex.textContent = index++;
+
+        const cellName = document.createElement("td");
+        cellName.textContent = name;
+
+        const cellCount = document.createElement("td");
+        cellCount.textContent = log[name];
+
+        row.appendChild(cellIndex);
+        row.appendChild(cellName);
+        row.appendChild(cellCount);
+
         tableBody.appendChild(row);
       }
     }
 
-    // เรียกแสดงตารางตอนโหลดหน้าเว็บ
     renderTable();
   </script>
-
 </body>
 </html>
