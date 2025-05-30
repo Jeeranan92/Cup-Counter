@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>ระบบนับจำนวนแก้ว</title>
   <style>
     body {
@@ -86,11 +86,14 @@
   </table>
 
   <script>
-    let totalCups = 150;
     const cupCountEl = document.getElementById("cupCount");
     const tableBody = document.getElementById("logTableBody");
 
-    const log = {};
+    // โหลดข้อมูลจาก localStorage หรือกำหนดค่าเริ่มต้น
+    let totalCups = parseInt(localStorage.getItem("totalCups")) || 150;
+    let log = JSON.parse(localStorage.getItem("cupLog")) || {};
+
+    cupCountEl.textContent = totalCups;
 
     function takeCup() {
       const name = document.getElementById("nameSelect").value;
@@ -106,14 +109,13 @@
       }
 
       totalCups--;
+      log[name] = (log[name] || 0) + 1;
+
+      // บันทึกข้อมูลลง localStorage
+      localStorage.setItem("totalCups", totalCups);
+      localStorage.setItem("cupLog", JSON.stringify(log));
+
       cupCountEl.textContent = totalCups;
-
-      if (!log[name]) {
-        log[name] = 1;
-      } else {
-        log[name]++;
-      }
-
       renderTable();
     }
 
@@ -130,6 +132,9 @@
         tableBody.appendChild(row);
       }
     }
+
+    // เรียกแสดงตารางตอนโหลดหน้าเว็บ
+    renderTable();
   </script>
 
 </body>
