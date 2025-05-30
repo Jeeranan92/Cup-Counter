@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ระบบนับจำนวนแก้ว</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    h2 {
+      color: #2c3e50;
+    }
+    select, button {
+      padding: 8px;
+      margin-right: 10px;
+      font-size: 16px;
+    }
+    table {
+      border-collapse: collapse;
+      margin-top: 20px;
+      width: 100%;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+    }
+    th {
+      background-color: #f39c12;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>ระบบนับจำนวนแก้วทั้งหมด (150 ใบ)</h2>
+
+  <label for="nameSelect">เลือกชื่อ:</label>
+  <select id="nameSelect">
+    <option value="">-- เลือกชื่อ --</option>
+    <option value="ผศ.ดร.ณฐุปกรน์  เดชสุภา">ผศ.ดร.ณฐุปกรน์  เดชสุภา</option>
+    <option value="รศ.ดร.ธาริกา  ธรรมวิจิตร">รศ.ดร.ธาริกา  ธรรมวิจิตร</option>
+    <option value="รศ.ดร.สุชาติ  โกทันย์">รศ.ดร.สุชาติ  โกทันย์</option>
+    <option value="รศ.ดร.เฉลิมชัย  ปิละพงค์">รศ.ดร.เฉลิมชัย  ปิละพงค์</option>
+    <option value="รศ.ดร.หัสฤกษ์  เนียมอินทร์">รศ.ดร.หัสฤกษ์  เนียมอินทร์</option>
+    <option value="ศ.ดร.มนตรี  ตั้งใจ">ศ.ดร.มนตรี  ตั้งใจ</option>
+    <option value="รศ.ดร.ชัชนก  อุดมธนกุลชัย">รศ.ดร.ชัชนก  อุดมธนกุลชัย</option>
+    <option value="รศ.ดร.ศิริประภา  แก้วแจ้ง">รศ.ดร.ศิริประภา  แก้วแจ้ง</option>
+    <option value="ผศ.ดร.สมพงษ์  ศรีบุรี">ผศ.ดร.สมพงษ์  ศรีบุรี</option>
+    <option value="ผศ.ดร.สุรัชณีย์  พัดงาม">ผศ.ดร.สุรัชณีย์  พัดงาม</option>
+    <option value="ผศ.ดร.กิตติชัย  วรรธนะจิตติกุล">ผศ.ดร.กิตติชัย  วรรธนะจิตติกุล</option>
+    <option value="ผศ.ดร.จิราภรณ์  กันทะพันธ์">ผศ.ดร.จิราภรณ์  กันทะพันธ์</option>
+    <option value="ผศ.ดร.ชญานิษฐ์  จำปี">ผศ.ดร.ชญานิษฐ์  จำปี</option>
+    <option value="ผศ.ดร.ศิริประภา  สมบูรณ์">ผศ.ดร.ศิริประภา  สมบูรณ์</option>
+    <option value="ผศ.ดร.กฤช  ใจคุ้มเก่า">ผศ.ดร.กฤช  ใจคุ้มเก่า</option>
+    <option value="ผศ.ดร.อุเทน  ยะราช">ผศ.ดร.อุเทน  ยะราช</option>
+    <option value="อ.ดร.รัฐพร  บุญสุทธิ์">อ.ดร.รัฐพร  บุญสุทธิ์</option>
+    <option value="อ.ดร.ณัฐวดี  อินต๊ะชัย">อ.ดร.ณัฐวดี  อินต๊ะชัย</option>
+    <option value="อ.ดร.วรวัฒน์   ผลทับทิม">อ.ดร.วรวัฒน์   ผลทับทิม</option>
+    <option value="อ.ดร.เบญจมาภรณ์  สุภาวัฒน์">อ.ดร.เบญจมาภรณ์  สุภาวัฒน์</option>
+    <option value="อ.ดร.ดวงหทัย  ปสันตา">อ.ดร.ดวงหทัย  ปสันตา</option>
+    <option value="เกวลิน  รักษ์ทินกร">เกวลิน  รักษ์ทินกร</option>
+    <option value="จีรนันท์  อัครชัยจารุกรณ์">จีรนันท์  อัครชัยจารุกรณ์</option>
+    <option value="ณัฐฐา   เอี่ยมจุ้ย">ณัฐฐา   เอี่ยมจุ้ย</option>
+    <option value="แสงสิรินทร์   วงศ์สิรินานนท์">แสงสิรินทร์   วงศ์สิรินานนท์</option>
+    <option value="จิตรวดี ธาตุสุวรรณ">จิตรวดี ธาตุสุวรรณ</option>
+    <option value="จิราภัทร">จิราภัทร</option>
+    <option value="ไพบูรณ์  ฟูญาติ">ไพบูรณ์  ฟูญาติ</option>
+    <option value="จารุวรรณ">จารุวรรณ</option>
+  </select>
+  <button onclick="takeCup()">รับแก้ว</button>
+
+  <h3>จำนวนแก้วที่เหลือ: <span id="cupCount">150</span></h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ลำดับ</th>
+        <th>ชื่อ</th>
+        <th>จำนวนที่รับไป</th>
+      </tr>
+    </thead>
+    <tbody id="logTableBody">
+    </tbody>
+  </table>
+
+  <script>
+    let totalCups = 150;
+    const cupCountEl = document.getElementById("cupCount");
+    const tableBody = document.getElementById("logTableBody");
+
+    const log = {};
+
+    function takeCup() {
+      const name = document.getElementById("nameSelect").value;
+
+      if (!name) {
+        alert("กรุณาเลือกชื่อก่อน");
+        return;
+      }
+
+      if (totalCups <= 0) {
+        alert("แก้วหมดแล้ว!");
+        return;
+      }
+
+      totalCups--;
+      cupCountEl.textContent = totalCups;
+
+      if (!log[name]) {
+        log[name] = 1;
+      } else {
+        log[name]++;
+      }
+
+      renderTable();
+    }
+
+    function renderTable() {
+      tableBody.innerHTML = "";
+      let index = 1;
+      for (const name in log) {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${index++}</td>
+          <td>${name}</td>
+          <td>${log[name]}</td>
+        `;
+        tableBody.appendChild(row);
+      }
+    }
+  </script>
+
+</body>
+</html>
